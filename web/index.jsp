@@ -1,4 +1,4 @@
-<%--
+<%@ page import="java.io.File" %><%--
   Created by IntelliJ IDEA.
   User: Do Hun
   Date: 2020-11-24
@@ -8,9 +8,11 @@
 <%@ page contentType="text/html;charset=UTF-8" language="java" %>
 <html>
   <head>
-    <title>$Title$</title>
+    <title>MAIN</title>
   </head>
   <body>
-  $END$
+  <%
+    File file = new File("./");
+  %>
   </body>
 </html>
