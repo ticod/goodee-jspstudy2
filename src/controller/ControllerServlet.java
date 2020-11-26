@@ -2,7 +2,6 @@ package controller;
 
 import action.Action;
 import action.ActionForward;
-import action.HelloAction;
 
 import javax.servlet.RequestDispatcher;
 import javax.servlet.ServletConfig;
@@ -83,7 +82,9 @@ public class ControllerServlet extends HttpServlet {
     }
 
     protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
+
         request.setCharacterEncoding("utf-8");
+
         Action action = null;
         ActionForward forward = null;
         String command = null;

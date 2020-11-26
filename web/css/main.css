@@ -1,0 +1,39 @@
+/* /chap7/css/main.css */
+body {
+    display: flex;
+    align-items: center;
+}
+
+body form {
+    width: 100%;
+}
+
+table {
+    width: 100%;
+    border-collapse: collapse;
+}
+
+th, td {
+    border: 3px solid black;
+    text-align: center;
+    padding: 8px;
+}
+
+th {
+    background-color: #b7f0b1;
+    color: #353535;
+}
+
+td {
+    background-color: #F2F2F2;
+}
+
+caption {
+    color: #111111;
+    font-size: 25px;
+    background-color: #FFFFFF;
+}
+
+input[type=text], input[type=password], textarea {
+    width: 100%;
+}
