@@ -25,5 +25,7 @@
     <orderEntry type="library" name="Java EE 6-Java EE 6" level="project" />
     <orderEntry type="library" exported="" name="jstl-1.2" level="project" />
     <orderEntry type="library" name="Java EE 6-Java EE 6" level="project" />
+    <orderEntry type="library" exported="" name="cos" level="project" />
+    <orderEntry type="library" exported="" name="mariadb-java-client-2.7.0" level="project" />
   </component>
 </module>

@@ -9,6 +9,8 @@
         </element>
         <element id="directory" name="lib">
           <element id="library" level="project" name="jstl-1.2" />
+          <element id="library" level="project" name="mariadb-java-client-2.7.0" />
+          <element id="library" level="project" name="cos" />
         </element>
       </element>
     </root>
