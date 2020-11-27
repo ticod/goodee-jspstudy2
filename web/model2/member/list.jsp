@@ -1,32 +1,6 @@
-<%@ page import="model.member.Member" %>
-<%@ page import="java.util.List" %>
-<%@ page import="model.member.MemberDao" %>
-<%--
-  Date: 2020-11-18
---%>
+<%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
 <%@ page contentType="text/html;charset=UTF-8"
          pageEncoding="UTF-8" %>
-<!-- 로그인 아이디 검색 -->
-<%
-    String sessionId = (String)session.getAttribute("login");
-
-    // 로그아웃 상태인 경우
-    if (sessionId == null) {
-%>
-<script>
-    alert("로그인이 필요합니다.");
-    location.href = "loginform.jsp";
-</script>
-
-<!-- 관리자가 아닌 경우-->
-<% } else if (!sessionId.equals("admin")) { %>
-<script>
-    alert("관리자만 가능합니다.");
-    location.href = "main.jsp";
-</script>
-
-<!-- 관리자인 경우 목록 출력 -->
-<% } else { %>
 <!DOCTYPE html>
 <html>
 <head>
@@ -35,7 +9,6 @@
     <link rel="stylesheet" href="../../css/main.css">
 </head>
 <body>
-<% List<Member> members = new MemberDao().selectAll(); %>
 <table>
     <caption>회원 목록</caption>
     <tr>
@@ -43,34 +16,34 @@
         <th>사진</th>
         <th>이름</th>
         <th>성별</th>
-        <th>전화</th>
+        <th>전화</th>x
         <th style="background-color:#FFCC00;">관리</th>
     </tr>
-    <% for (Member member : members) { %>
+    <c:forEach var="member" items="${members}">
     <tr>
         <td>
-            <a href="info.jsp?id=<%=member.getId()%>"><%=member.getId()%></a>
+            <a href="info.me?id=${member.id}">${member.id}</a>
         </td>
         <td>
-            <img src="/picture/sm_<%=member.getPicture()%>" width="40" height="45">
+            <img src="picture/sm_${member.picture}" width="40" height="45" style="object-fit: contain;">
         </td>
         <td>
-            <%=member.getName()%>
+            ${member.name}
         </td>
         <td>
-            <%=member.getGender() == 1 ? "남" : "여"%>
+            ${(member.gender == 1) ? "남" : "여"}
         </td>
         <td>
-            <%=member.getTel()%>
+            ${member.tel}
         </td>
         <td>
-            <a href="updateform.me?id=<%=member.getId()%>">[수정]</a>
-            <% if (!member.getId().equals("admin")) { %>
-            <a href="deleteform.me?id=<%=member.getId()%>">[강제 탈퇴]</a>
-            <% } %>
+            <a href="updateform.me?id=${member.id}">[수정]</a>
+            <c:if test="${member.id != 'admin'}">
+            <a href="deleteform.me?id=${member.id}">[강제 탈퇴]</a>
+            </c:if>
         </td>
     </tr>
-    <% } %>
+    </c:forEach>
     <tr>
         <td colspan="6">
             <a href="main.me" style="text-align: left">[돌아가기]</a>
@@ -79,4 +52,3 @@
 </table>
 </body>
 </html>
-<% } %>

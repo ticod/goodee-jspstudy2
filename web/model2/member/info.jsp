@@ -12,7 +12,7 @@
     <table>
         <caption>회원 정보 보기</caption>
         <tr>
-            <td rowspan="7" width="30%"><img src="/picture/${member.picture}" width="200" height="210"></td>
+            <td rowspan="7" width="30%"><img src="picture/${member.picture}" width="200" height="210" style="object-fit: contain;"></td>
             <th width="20%">아이디</th>
             <td>${member.id}</td>
         </tr>

@@ -23,7 +23,6 @@ public abstract class UserLoginAction implements Action {
 
     @Override
     public ActionForward execute(HttpServletRequest request, HttpServletResponse response) throws Exception {
-
         sessionId = (String)request.getSession().getAttribute("login");
         parameterId = request.getParameter("id");
 

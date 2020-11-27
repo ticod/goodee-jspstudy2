@@ -18,7 +18,7 @@
         <tr>
             <td rowspan="4">
                 <input type="hidden" name="picture" value="${member.picture}">
-                <img src="/picture/${member.picture}" width="100" height="120" id="pic"> <br>
+                <img src="picture/${member.picture}" width="100" height="120" id="pic"> <br>
                 <font size="1"><a href="javascript:winUpload()">사진 수정</a></font>
             </td>
             <th>아이디</th>
