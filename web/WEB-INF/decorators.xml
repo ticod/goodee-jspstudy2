@@ -1,0 +1,7 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<decorators defaultdir="/layout">
+    <decorator name="main" page="layout.jsp">
+        <pattern>/model2/*</pattern>
+    </decorator>
+    <excludes></excludes>
+</decorators>

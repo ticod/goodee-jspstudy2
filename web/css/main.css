@@ -1,9 +1,4 @@
 /* /chap7/css/main.css */
-body {
-    display: flex;
-    align-items: center;
-}
-
 body form {
     width: 100%;
 }
