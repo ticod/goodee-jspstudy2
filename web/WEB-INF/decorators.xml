@@ -3,5 +3,12 @@
     <decorator name="main" page="layout.jsp">
         <pattern>/model2/*</pattern>
     </decorator>
-    <excludes></excludes>
+    <!-- sitemesh의 설정 제외 항목 -->
+    <excludes>
+        <pattern>/model2/member/id*</pattern>
+        <pattern>/model2/member/pw*</pattern>
+        <pattern>/model2/member/picture*</pattern>
+        <pattern>/model2/member/password*</pattern>
+        <pattern>/model2/member/alert*</pattern>
+    </excludes>
 </decorators>

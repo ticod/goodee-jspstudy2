@@ -1,10 +1,4 @@
-<%@ page import="java.io.File" %><%--
-  Created by IntelliJ IDEA.
-  User: Do Hun
-  Date: 2020-11-24
-  Time: 오전 10:16
-  To change this template use File | Settings | File Templates.
---%>
+<%@ page import="java.io.File" %>
 <%@ page contentType="text/html;charset=UTF-8" language="java" %>
 <html>
   <head>
@@ -12,7 +6,14 @@
   </head>
   <body>
   <%
-    File file = new File("./");
+    String currentPath = request.getParameter("path");
+    File directory = new File("./");
+    if (directory.isDirectory()) {
+
+    }
   %>
+  <script>
+    location.href = "/model2/board/list.do";
+  </script>
   </body>
 </html>
