@@ -28,5 +28,6 @@
     <orderEntry type="library" exported="" name="cos" level="project" />
     <orderEntry type="library" exported="" name="mariadb-java-client-2.7.0" level="project" />
     <orderEntry type="library" exported="" name="sitemesh-2.4.2" level="project" />
+    <orderEntry type="library" exported="" name="mybatis" level="project" />
   </component>
 </module>

@@ -6,7 +6,7 @@ import action.ActionForward;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 import model.member.Member;
-import model.member.MemberDao;
+import model.mybatis.MemberDao;
 
 public class JoinAction implements Action {
     @Override

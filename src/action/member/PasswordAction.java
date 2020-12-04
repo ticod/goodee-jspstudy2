@@ -2,7 +2,7 @@ package action.member;
 
 import action.Action;
 import action.ActionForward;
-import model.member.MemberDao;
+import model.mybatis.MemberDao;
 
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
@@ -14,7 +14,7 @@ public class PasswordAction implements Action {
         String sessionId = (String)request.getSession().getAttribute("login");
         String parameterCurrentPassword = request.getParameter("pass");
         String changePassword = request.getParameter("chgpass");
-        String dbPassword = dao.selectOne(sessionId).getPass();
+        String dbPassword = dao.select(sessionId).getPass();
 
         boolean opener = false; // opener 페이지의 url
         boolean closer = false; // 현재 페이지 close?

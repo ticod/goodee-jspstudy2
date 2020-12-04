@@ -1,9 +1,7 @@
 package action.member;
 
-import action.Action;
 import action.ActionForward;
-import model.member.Member;
-import model.member.MemberDao;
+import model.mybatis.MemberDao;
 
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
@@ -20,7 +18,7 @@ public class DeleteAction extends UserLoginAction {
 
         MemberDao dao = new MemberDao();
         String parameterPassword = request.getParameter("pass");
-        String dbPassword = dao.selectOne(sessionId).getPass();
+        String dbPassword = dao.select(sessionId).getPass();
         boolean isAdmin = sessionId.equals("admin");
 
         String msg = null;

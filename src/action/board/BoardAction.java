@@ -7,7 +7,7 @@ package action.board;
 import action.ActionForward;
 import com.oreilly.servlet.MultipartRequest;
 import model.board.Board;
-import model.board.BoardDao;
+import model.mybatis.BoardDao;
 
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
@@ -124,30 +124,29 @@ public class BoardAction {
 
     public ActionForward reply(HttpServletRequest request,
                               HttpServletResponse response) {
-        int num = 0;
-        try {
-            num = Integer.parseInt(request.getParameter("num"));
-        } catch (NumberFormatException e) {}
-        if (num == 0) {
-            request.setAttribute("msg", "잘못된 접근입니다");
-            request.setAttribute("url", "list.do");
-            return new ActionForward(false, "../alert.jsp");
-        }
-
         String path = request.getServletContext().getRealPath("/")
                 + "model2/board/file/";
         File f = new File(path);
-        if (!f.exists()) {
-            f.mkdirs();
-        }
-
         MultipartRequest multi = null;
         Board board = new Board();
         BoardDao dao = new BoardDao();
 
+        if (!f.exists()) {
+            f.mkdirs();
+        }
+
         try {
             multi = new MultipartRequest(
                     request, path, 10 * 1024 * 1024, "utf-8");
+            int num = 0;
+            try {
+                num = Integer.parseInt(multi.getParameter("num"));
+            } catch (NumberFormatException e) {}
+            if (num == 0) {
+                request.setAttribute("msg", "잘못된 접근입니다");
+                request.setAttribute("url", "list.do");
+                return new ActionForward(false, "../alert.jsp");
+            }
             board.setName(multi.getParameter("name"));
             board.setPass(multi.getParameter("pass"));
             board.setSubject(multi.getParameter("subject"));

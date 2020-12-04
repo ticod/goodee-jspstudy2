@@ -3,7 +3,7 @@ package action.member;
 import action.Action;
 import action.ActionForward;
 import model.member.Member;
-import model.member.MemberDao;
+import model.mybatis.MemberDao;
 
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
@@ -13,7 +13,7 @@ public class LoginAction implements Action {
     public ActionForward execute(HttpServletRequest request, HttpServletResponse response) throws Exception {
         String id = request.getParameter("id");
         String pass = request.getParameter("pass");
-        Member mem = new MemberDao().selectOne(id);
+        Member mem = new MemberDao().select(id);
 
         // id에 해당하는 member가 없는 경우
         if (mem == null) {

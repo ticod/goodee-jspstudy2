@@ -40,7 +40,7 @@
                     <!-- 답글 들여쓰기 -->
                     <span>
                         <c:if test="${board.grplevel > 0}">
-                            <c:forEach begin="1" end="${board.grplevel}">
+                            <c:forEach begin="2" end="${board.grplevel}">
                             &nbsp;&nbsp;
                             </c:forEach>
                         └

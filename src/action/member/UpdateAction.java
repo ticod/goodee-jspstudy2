@@ -2,7 +2,7 @@ package action.member;
 
 import action.ActionForward;
 import model.member.Member;
-import model.member.MemberDao;
+import model.mybatis.MemberDao;
 
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
@@ -23,7 +23,7 @@ public class UpdateAction extends UserLoginAction {
         member.setEmail(request.getParameter("email"));
         member.setPicture(request.getParameter("picture"));
 
-        Member dbMember = dao.selectOne(sessionId);
+        Member dbMember = dao.select(sessionId);
 
         String msg = "비밀번호가 틀렸습니다.";
         String url = "updateform.me?id=" + member.getId();
