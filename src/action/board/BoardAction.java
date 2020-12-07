@@ -70,13 +70,22 @@ public class BoardAction {
                               HttpServletResponse response) {
         BoardDao dao = new BoardDao();
 
+        String find = request.getParameter("find");
+        String column = request.getParameter("column");
+
+        if (column == null || column.trim().equals("")
+                || find == null || find.trim().equals("")) {
+            column = null;
+            find = null;
+        }
+
         int pageNum = 1;
         try {
             pageNum = Integer.parseInt(request.getParameter("pageNum"));
         } catch (NumberFormatException e) {}
         int limit = 10;
-        List<Board> boardList = new BoardDao().list(pageNum, limit);
-        int boardCount = dao.boardCount();
+        List<Board> boardList = new BoardDao().list(pageNum, limit, column, find);
+        int boardCount = dao.boardCount(column, find);
 
         int maxPage = (int)((double) boardCount / limit + 0.95);
         int startPage = ((int) (pageNum / 10.0 + 0.9) - 1) * 10 + 1;

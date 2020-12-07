@@ -19,14 +19,13 @@ th {
     color: #353535;
 }
 
-td {
+caption, td {
     background-color: #F2F2F2;
 }
 
 caption {
     color: #111111;
     font-size: 25px;
-    background-color: #FFFFFF;
 }
 
 input[type=text], input[type=password], textarea {

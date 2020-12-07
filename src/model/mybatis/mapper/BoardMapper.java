@@ -11,17 +11,22 @@ public interface BoardMapper {
     @Select("select ifnull(MAX(num), 0) from board")
     int maxNum();
 
-    @Select("select count(*) from board")
-    int boardCount();
+    @Select({"<script>",
+            "select count(*) from board ",
+            "<if test='col1 != null'> where ${col1} like '%${find}%' </if>",
+            "<if test='col2 != null'> or ${col2} like '%${find}%' </if>",
+            "<if test='col3 != null'> or ${col3} like '%${find}%' </if>",
+            "</script>"})
+    int boardCount(Map<String, Object> map);
 
     @Select({"<script>",
             "select * from board ",
-            "<if test='num != null'>",
-              "where num = #{num}",
-            "</if>",
-            "<if test='limit != null'>",
-              "order by grp desc, grpstep limit #{page}, #{limit}",
-            "</if>",
+            "<if test='num != null'> where num = #{num} </if>",
+            "<if test='col1 != null'> where ${col1} like '%${find}%' </if>",
+            "<if test='col2 != null'> or ${col2} like '%${find}%' </if>",
+            "<if test='col3 != null'> or ${col3} like '%${find}%' </if>",
+            "<if test='start != null'> order by grp desc, ",
+            "grpstep limit #{start}, #{limit} </if>",
             "</script>"})
     List<Board> select(Map<String, Object> map);
 

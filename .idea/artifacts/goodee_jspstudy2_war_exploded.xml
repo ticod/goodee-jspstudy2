@@ -1,6 +1,6 @@
 <component name="ArtifactManager">
   <artifact type="exploded-war" name="goodee-jspstudy2:war exploded">
-    <output-path>$PROJECT_DIR$/out/artifacts/goodee_jspstudy2_war_exploded</output-path>
+    <output-path>$PROJECT_DIR$/web</output-path>
     <root id="root">
       <element id="javaee-facet-resources" facet="goodee-jspstudy2/web/웹" />
       <element id="directory" name="WEB-INF">
@@ -13,6 +13,7 @@
           <element id="library" level="project" name="cos" />
           <element id="library" level="project" name="sitemesh-2.4.2" />
           <element id="library" level="project" name="mybatis" />
+          <element id="library" level="project" name="javax.websocket-api-1.1" />
         </element>
       </element>
     </root>

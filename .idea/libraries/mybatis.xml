@@ -1,8 +1,8 @@
 <component name="libraryTable">
   <library name="mybatis">
     <CLASSES>
-      <root url="jar://$PROJECT_DIR$/lib/mariadb-java-client-2.7.0.jar!/" />
       <root url="jar://$PROJECT_DIR$/lib/mybatis-3.2.7.jar!/" />
+      <root url="jar://$PROJECT_DIR$/lib/mariadb-java-client-2.5.4.jar!/" />
     </CLASSES>
     <JAVADOC />
     <SOURCES />
