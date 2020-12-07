@@ -1,8 +1,4 @@
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
-<%@ page import="model.member.Member" %>
-<%@ page import="model.member.MemberDao" %><%--
-  Date: 2020-11-18
---%>
 <%@ page contentType="text/html;charset=UTF-8"
          pageEncoding="UTF-8" %>
 <!DOCTYPE html>
@@ -18,7 +14,10 @@
         <tr>
             <td rowspan="4">
                 <input type="hidden" name="picture" value="${member.picture}">
-                <img src="picture/${member.picture}" width="100" height="120" id="pic"> <br>
+                <img src="picture/${member.picture}"
+                     width="100" height="120"
+                     id="pic"
+                     style="object-fit: contain;"> <br>
                 <font size="1"><a href="javascript:winUpload()">사진 수정</a></font>
             </td>
             <th>아이디</th>
