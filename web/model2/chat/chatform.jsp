@@ -20,7 +20,8 @@
     <textarea readonly="readonly"
               cols="50" rows="10"
               id="messageWindow"
-              style="width: 96%;">
+              style="width: 96%;
+                    resize: none;">
     </textarea> <br>
     <input type="text" id="inputMessage" style="width: 80%;" onkeydown="keyIn(event)">
     <input type="button" value="전송" style="width: 15%;" onclick="send()">
@@ -28,7 +29,7 @@
 <script>
     const messageWindow = document.getElementById('messageWindow');
     const inputMessage = document.getElementById('inputMessage');
-    const webSocket = new WebSocket("ws://192.168.4.27:8081${path}/chatting");
+    const webSocket = new WebSocket("ws://172.30.1.59:8081${path}/chatting");
 
     webSocket.onerror = function(event) {
         onError(event);
@@ -45,6 +46,7 @@
 
     function onMessage(event) {
         messageWindow.value += (event.data + "\n");
+        messageWindow.scrollTop = messageWindow.scrollHeight;
     }
 
     function onOpen(event) {
@@ -65,6 +67,8 @@
         messageWindow.value += "${sessionScope.login} : " + inputMessage.value + "\n";
         webSocket.send("${sessionScope.login} : " + inputMessage.value);
         inputMessage.value = "";
+        inputMessage.focus();
+        messageWindow.scrollTop = messageWindow.scrollHeight;
     }
 </script>
 </body>

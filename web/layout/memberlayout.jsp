@@ -41,11 +41,19 @@
             </div>
         </c:if>
         <c:if test="${!empty sessionScope.login}">
-        <div class="w3-col s4">
-            <i class="fa fa-user w3-jumbo"></i>
+        <div class="w3-col s5">
+            <c:if test="${empty sessionScope.profile}">
+                <i class="fa fa-user w3-jumbo"></i>
+            </c:if>
+            <c:if test="${!empty sessionScope.profile}">
+                <img src="/model2/member/picture/${sessionScope.profile}"
+                     class="w3-round"
+                     alt="Alps"
+                     width="100" height="105" style="object-fit: contain;">
+            </c:if>
         </div>
-        <div class="w3-col s8 w3-bar">
-            <span>Welcome, <strong>${sessionScope.login}</strong></span><br>
+        <div class="w3-col s7 w3-bar">
+            <span style="text-align: right;">Welcome, <strong>${sessionScope.login}</strong></span><br>
             <a href="${path}/model2/member/main.me" class="w3-bar-item w3-button"><i class="fa fa-home"></i></a>
             <a href="${path}/model2/member/info.me?id=${sessionScope.login}" class="w3-bar-item w3-button"><i class="fa fa-search"></i></a>
             <a href="${path}/model2/member/logout.me" class="w3-bar-item w3-button"><i class="fa fa-close"></i></a>

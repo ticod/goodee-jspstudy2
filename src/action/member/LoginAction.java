@@ -23,6 +23,7 @@ public class LoginAction implements Action {
             // 비밀번호가 일치하는 경우
             if (pass.equals(mem.getPass())) {
                 request.getSession().setAttribute("login", id);
+                request.getSession().setAttribute("profile", mem.getPicture());
                 request.setAttribute("msg", mem.getName() + "님이 로그인 했습니다");
                 request.setAttribute("url", "main.me");
             } else {

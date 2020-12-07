@@ -30,6 +30,7 @@ public class UpdateAction extends UserLoginAction {
 
         if (member.getPass().equals(dbMember.getPass())) {
             if (dao.update(member) > 0) {
+                request.getSession().setAttribute("profile", member.getPicture());
                 return new ActionForward(true, "info.me?id=" + member.getId());
             } else {
                 msg = "수정 실패! 관리자에게 문의하세요.";
