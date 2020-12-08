@@ -7,7 +7,7 @@ import javax.servlet.http.HttpServletResponse;
 import java.util.Arrays;
 import java.util.List;
 
-public class MailAction extends AdminLoginAction {
+public class MailFormAction extends AdminLoginAction {
 
     @Override
     public ActionForward doExecute(HttpServletRequest request,
@@ -18,7 +18,7 @@ public class MailAction extends AdminLoginAction {
                 request.getParameterValues("mailchk")
         );
         request.setAttribute("list", list);
-        return null;
+        return new ActionForward(false, "mailform.jsp");
 
     }
 

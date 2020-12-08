@@ -1,9 +1,6 @@
 <%@ page contentType="text/html;charset=UTF-8" language="java" %>
-<html>
-  <head>
-    <title>$Title$</title>
-  </head>
-  <body>
-  $END$
-  </body>
-</html>
+<script>
+    window.parent.CKEDITOR.tools.callFunction(
+        ${param.CKEditorFuncNum}, 'imgfile/${fileName}', '이미지 업로드 완료'
+    )
+</script>
