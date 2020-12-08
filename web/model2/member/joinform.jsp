@@ -10,7 +10,7 @@
 <body>
 <form action="join.me" name="f" method="post">
     <input type="hidden" name="picture" value="">
-    <table>
+    <table class="w3-table-all w3-centered w3-card-4" style="margin: 20px;">
         <tr>
             <td rowspan="4" valign="bottom">
                 <img src="" width="100" height="120" id="pic"> <br>

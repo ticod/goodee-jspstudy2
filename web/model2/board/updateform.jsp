@@ -12,10 +12,9 @@
 <form action="update.do" method="post" enctype="multipart/form-data" name="f">
     <input type="hidden" name="num" value="${board.num}">
     <input type="hidden" name="file2" value="${empty board.file1 ? "" : board.file1}">
-    <table>
-        <caption>게시글 수정</caption>
+    <table class="table table-bordered">
         <tr>
-            <th style="width:20%">글쓴이</th>
+            <th style="width:20%" class="table-active">글쓴이</th>
             <td><input type="text" name="name" value="${board.name}"></td>
         </tr>
         <tr>
@@ -23,15 +22,18 @@
             <td><input type="password" name="pass"></td>
         </tr>
         <tr>
-            <th>제목</th>
+            <th class="table-active">제목</th>
             <td><input type="text" name="subject" value="${board.subject}"></td>
         </tr>
         <tr>
             <th>내용</th>
-            <td><textarea rows="15" name="content">${board.content}</textarea></td>
+            <td><textarea rows="15" name="content" id="content1">${board.content}</textarea></td>
+            <script>CKEDITOR.replace("content1", {
+                filebrowserImageUploadUrl: "imgupload.do",
+            })</script>
         </tr>
         <tr>
-            <th>첨부파일</th>
+            <th class="table-active">첨부파일</th>
             <td style="text-align: left;">
                 <c:if test="${!empty board.file1}">
                     <div id="fileDesc">

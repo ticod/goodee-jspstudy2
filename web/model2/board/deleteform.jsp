@@ -8,7 +8,7 @@
     <link rel="stylesheet" href="../../css/main.css">
 </head>
 <body>
-<table>
+<table class="table table-bordered">
     <form action="delete.do" name="f" method="post">
         <input type="hidden" name="num" value="${param.num}">
         <tr>

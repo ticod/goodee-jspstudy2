@@ -9,6 +9,7 @@
         <webroots>
           <root url="file://$MODULE_DIR$/web" relative="/" />
         </webroots>
+        <sourceRoots />
       </configuration>
       <facet type="webservices" name="WebServices">
         <configuration ws.engine="Apache Axis" />
@@ -30,5 +31,7 @@
     <orderEntry type="library" exported="" name="sitemesh-2.4.2" level="project" />
     <orderEntry type="library" exported="" name="mybatis" level="project" />
     <orderEntry type="library" name="javax.websocket-api-1.1" level="project" />
+    <orderEntry type="library" name="mail-1.4.7" level="project" />
+    <orderEntry type="library" name="activation-1.1.1" level="project" />
   </component>
 </module>

@@ -6,10 +6,9 @@
     <link rel="stylesheet" href="../../css/main.css">
 </head>
 <body>
-<table>
-    <caption>게시물 상세 보기</caption>
+<table class="table table-bordered">
     <tr>
-        <th style="width: 20%">글쓴이</th>
+        <th style="width: 20%" class="table-active">글쓴이</th>
         <td>${board.name}</td>
     </tr>
     <tr>
@@ -17,7 +16,7 @@
         <td>${board.subject}</td>
     </tr>
     <tr style="height: 30vh;">
-        <th>내용</th>
+        <th class="table-active">내용</th>
         <td style="border-width: 1px; vertical-align: top; text-align: left;">
             ${board.content}
         </td>
@@ -35,12 +34,12 @@
         </td>
 
     </tr>
-    <tr>
+    <tr class="table-active">
         <td colspan="2">
-            <a href="replyform.do?num=${board.num}">[답변]</a>
-            <a href="updateform.do?num=${board.num}">[수정]</a>
-            <a href="deleteform.do?num=${board.num}">[삭제]</a>
-            <a href="list.do">[목록]</a>
+            <a class="btn btn-outline-dark" href="replyform.do?num=${board.num}">답변</a>
+            <a class="btn btn-outline-dark" href="updateform.do?num=${board.num}">수정</a>
+            <a class="btn btn-outline-dark" href="deleteform.do?num=${board.num}">삭제</a>
+            <a class="btn btn-outline-dark" href="list.do">목록</a>
         </td>
     </tr>
 </table>

@@ -10,7 +10,7 @@
 </head>
 <body>
 <form action="update.me" name="f" method="post" onsubmit="return inputCheck(this)">
-    <table>
+    <table class="w3-table-all w3-centered w3-card-4" style="margin: 20px;">
         <tr>
             <td rowspan="4">
                 <input type="hidden" name="picture" value="${member.picture}">
@@ -48,11 +48,11 @@
         </tr>
         <tr>
             <td colspan="3">
-                <input type="submit" value="회원정보 수정">
+                <input class="w3-button w3-white w3-border" type="submit" value="회원정보 수정">
             <c:if test="${sessionScope.login != 'admin' || member.id == 'admin'}">
-                <input type="button" value="비밀번호 수정" onclick="winPasswordChange()">
+                <input class="w3-button w3-white w3-border" type="button" value="비밀번호 수정" onclick="winPasswordChange()">
             </c:if>
-                <input type="button" value="돌아가기" onclick="history.go(-1)">
+                <input class="w3-button w3-white w3-border" type="button" value="돌아가기" onclick="history.go(-1)">
             </td>
         </tr>
     </table>

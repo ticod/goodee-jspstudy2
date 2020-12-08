@@ -275,4 +275,20 @@ public class BoardAction {
         request.setAttribute("url", url);
         return new ActionForward(false, "../alert.jsp");
     }
+
+    public ActionForward imgupload(HttpServletRequest request,
+                                   HttpServletResponse response)
+            throws IOException {
+        String path = request.getServletContext().getRealPath("/")
+                + "model2/board/imgfile/";
+        File f = new File(path);
+        if (!f.exists()) f.mkdirs();
+        MultipartRequest multi = new MultipartRequest(
+                request, path, 10 * 1024 * 1024, "utf-8"
+        );
+        String fileName = multi.getFilesystemName("upload");
+        request.setAttribute("fileName", fileName);
+        request.setAttribute("CKEditorFuncNum", request.getParameter("CKEditorFuncNum"));
+        return new ActionForward(false, "ckeditor.jsp");
+    }
 }

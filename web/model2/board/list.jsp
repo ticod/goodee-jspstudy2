@@ -4,13 +4,13 @@
 <html>
 <head>
     <title>게시판</title>
-    <link rel="stylesheet" href="../../css/main.css">
+<%--    <link rel="stylesheet" href="../../css/main.css">--%>
 </head>
 <body>
-<form action="list.do" method="post" name="sf">
+<form class="form-group" action="list.do" method="post" name="sf">
     <div style="display: flex; justify-content: center;">
-        <input type="hidden" name="pageNum" value="1">
-        <select name="column">
+        <input type="hidden" name="pageNum" value="1" style="width: 10%">
+        <select class="form-control" name="column">
             <option value="">분류</option>
             <option value="subject">제목</option>
             <option value="name">작성자</option>
@@ -21,16 +21,18 @@
             <option value="subject,name,content">제목 + 작성자 + 내용</option>
         </select>
         <script>document.sf.column.value = "${param.column}";</script>
-        <input type="text" name="find" value="${param.find}" style="width: 50%;">
-        <input type="submit" value="검색">
+        <input class="form-control" type="text" name="find" value="${param.find}" style="width: 50%;">
+        <input class="btn btn-success" type="submit" value="검색">
     </div>
-<table>
-    <caption>글 목록</caption>
+<table class="table table-striped table-hover text-center">
     <c:choose>
         <c:when test="${boardCount <= 0}">
+        <thead class="thead-dark">
             <tr><td colspan="5">등록된 게시글이 없습니다</td></tr>
+        </thead>
         </c:when>
         <c:otherwise>
+        <thead class="thead-dark">
             <tr><td colspan="5" style="text-align: right">글 개수: ${boardCount}</td></tr>
             <tr></tr>
             <tr>
@@ -40,6 +42,7 @@
                 <th width="17%">등록일</th>
                 <th width="11%">조회수</th>
             </tr>
+        </thead>
             <c:forEach var="board" items="${boardList}">
             <tr>
                 <td>${boardNum}</td><c:set var="boardNum" value="${boardNum - 1}"/>
@@ -62,7 +65,7 @@
                             </c:forEach>
                         └
                         </c:if>
-                        <a href="info.do?num=${board.num}"> ${board.subject} </a>
+                        <a href="info.do?num=${board.num}" class="text-dark"> ${board.subject} </a>
                     </span>
                 </td>
                 <td>${board.name}</td>
@@ -86,16 +89,24 @@
 
             <tr>
                 <td colspan="5">
+                    <div class="d-flex justify-content-center">
+                    <ul class="pagination">
 
                         <!-- 이전 페이지 -->
                         <c:choose>
                             <c:when test="${pageNum <= 1}">
-                                [이전]
+                                <li class="page-item disabled">
+                                    <a class="page-link" href="#">
+                                        Previous
+                                    </a>
+                                </li>
                             </c:when>
                             <c:otherwise>
-                                <a href="#" onclick="movePage(${pageNum})">
-                                    [이전]
-                                </a>
+                                <li class="page-item">
+                                    <a class="page-link" href="#" onclick="movePage(${pageNum - 1})">
+                                    Previous
+                                    </a>
+                                </li>
                             </c:otherwise>
                         </c:choose>
 
@@ -103,12 +114,18 @@
                         <c:forEach var="i" begin="${startPage}" end="${endPage}">
                             <c:choose>
                                 <c:when test="${i == pageNum}">
-                                    [${i}]
+                                    <li class="page-item active">
+                                        <a class="page-link" href="#">
+                                                ${i}
+                                        </a>
+                                    </li>
                                 </c:when>
                                 <c:otherwise>
-                                    <a href="#" onclick="movePage(${i})">
-                                        [${i}]
-                                    </a>
+                                    <li class="page-item">
+                                        <a class="page-link" href="#" onclick="movePage(${i})">
+                                                ${i}
+                                        </a>
+                                    </li>
                                 </c:otherwise>
                             </c:choose>
                         </c:forEach>
@@ -116,20 +133,29 @@
                         <!-- 다음 페이지 -->
                         <c:choose>
                             <c:when test="${pageNum >= maxPage}">
-                                [다음]
-                            </c:when>
-                            <c:otherwise>
-                                <a href="#" onclick="movePage(${pageNum + 1})">
-                                    [다음]
-                                </a>
+                                <li class="page-item disabled">
+                                    <a class="page-link" href="#">
+                                        Next
+                                    </a>
+                                </li>
+                                </c:when>
+                                <c:otherwise>
+                                <li class="page-item">
+                                    <a class="page-link" href="#" onclick="movePage(${pageNum + 1})">
+                                        Next
+                                    </a>
+                                </li>
                             </c:otherwise>
                         </c:choose>
+
+                    </ul>
+                    </div>
                     </form>
                 </td>
             </tr>
             <tr>
                 <td colspan="5" style="text-align: right;">
-                    <a href="writeform.do">[글쓰기]</a>
+                    <a href="writeform.do" class="btn btn-success">글쓰기</a>
                 </td>
             </tr>
         </table>

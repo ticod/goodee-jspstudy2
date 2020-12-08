@@ -14,6 +14,8 @@
           <element id="library" level="project" name="sitemesh-2.4.2" />
           <element id="library" level="project" name="mybatis" />
           <element id="library" level="project" name="javax.websocket-api-1.1" />
+          <element id="library" level="project" name="mail-1.4.7" />
+          <element id="library" level="project" name="activation-1.1.1" />
         </element>
       </element>
     </root>

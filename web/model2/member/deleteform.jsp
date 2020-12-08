@@ -10,8 +10,7 @@
 <body>
 <form action="delete.me" method="post" name="f" onsubmit="return inputCheck(this)">
     <input type="hidden" name="id" value="${param.id}">
-    <table style="margin-top:30vh; margin-left:15vw; max-width:70vw;">
-        <caption>비밀번호 입력</caption>
+    <table class="w3-table-all w3-centered w3-card-4" style="margin: 20px;">
         <tr>
             <th>비밀번호</th>
             <td><input type="password" name="pass"></td>

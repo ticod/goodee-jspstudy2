@@ -9,8 +9,7 @@
     <link rel="stylesheet" href="../../css/main.css">
 </head>
 <body>
-    <table>
-        <caption>회원 정보 보기</caption>
+    <table class="w3-table-all w3-centered w3-card-4" style="margin: 20px;">
         <tr>
             <td rowspan="7" width="30%"><img src="picture/${member.picture}" width="200" height="210" style="object-fit: contain;"></td>
             <th width="20%">아이디</th>
@@ -34,11 +33,11 @@
         </tr>
         <tr>
             <td colspan="2">
-                <a href="updateform.me?id=${member.id}">[수정]</a>
+                <a class="w3-button w3-white w3-border" href="updateform.me?id=${member.id}">수정</a>
             <c:if test="${member.id != 'admin' && sessionScope.login != 'admin'}">
-                <a href="deleteform.me?id=${member.id}">[탈퇴]</a>
+                <a class="w3-button w3-white w3-border" href="deleteform.me?id=${member.id}">탈퇴</a>
             </c:if>
-                <a href="main.me">[돌아가기]</a>
+                <a class="w3-button w3-white w3-border" href="main.me">돌아가기</a>
             </td>
         </tr>
     </table>

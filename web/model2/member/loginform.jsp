@@ -12,7 +12,7 @@
 </head>
 <body>
 <form action="login.me" method="post" name="f" onsubmit="return inputCheck(this)">
-    <table>
+    <table class="w3-table-all w3-centered w3-card-4" style="margin: 20px;">
         <caption>로그인</caption>
         <tr>
             <th>아이디</th>
@@ -24,10 +24,10 @@
         </tr>
         <tr>
             <td colspan="2">
-                <input type="submit" value="로그인">
-                <input type="button" value="회원가입" onclick="location.href='joinform.jsp'">
-                <input type="button" value="아이디 찾기" onclick="winOpen('idform')">
-                <input type="button" value="비밀번호 찾기" onclick="winOpen('pwform')">
+                <input class="w3-button w3-white w3-border" type="submit" value="로그인">
+                <input class="w3-button w3-white w3-border" type="button" value="회원가입" onclick="location.href='joinform.jsp'">
+                <input class="w3-button w3-white w3-border" type="button" value="아이디 찾기" onclick="winOpen('idform')">
+                <input class="w3-button w3-white w3-border" type="button" value="비밀번호 찾기" onclick="winOpen('pwform')">
             </td>
         </tr>
     </table>
