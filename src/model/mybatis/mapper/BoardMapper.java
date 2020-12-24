@@ -52,4 +52,12 @@ public interface BoardMapper {
 
     @Delete("delete from board where num = #{num}")
     int delete(int num);
+
+    @Select("select name, count(*) cnt from board group by name " +
+            "having count(*) > 1 order by cnt desc")
+    List<Map<String, Integer>> graph();
+
+    @Select("select date_format(regdate, '%Y-%m-%d') regdate, count(*) cnt from board group by date_format(regdate, '%Y-%m-%d') " +
+            "having count(*) > 1 order by date_format(regdate, '%Y-%m-%d') limit 7")
+    List<Map<String, Object>> barGraph();
 }

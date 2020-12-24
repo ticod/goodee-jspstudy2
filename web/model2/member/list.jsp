@@ -60,19 +60,28 @@
     </tr>
 </table>
 </form>
+
+<script type="text/javascript"
+        src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js">
+</script>
 <script>
+    // jQuery 방식
     function checkAll(checkbox) {
-
-        const isChecked = checkbox.checked;
-        const form = document.f;
-        const reg = /\d/;
-
-        for (let i in form.mailchk) {
-            if (reg.test(i) && !isNaN(i)) {
-                form.mailchk[i].checked = isChecked;
-            }
-        }
+        $("input[name=mailchk]").prop("checked", checkbox.checked);
     }
+
+    // function checkAll(checkbox) {
+    //
+    //     const isChecked = checkbox.checked;
+    //     const form = document.f;
+    //     const reg = /\d/;
+    //
+    //     for (let i in form.mailchk) {
+    //         if (reg.test(i) && !isNaN(i)) {
+    //             form.mailchk[i].checked = isChecked;
+    //         }
+    //     }
+    // }
 </script>
 </body>
 </html>

@@ -3,6 +3,7 @@
   <component name="WebContextManager">
     <option name="state">
       <map>
+        <entry key="file://$PROJECT_DIR$/web/layout/memberlayout.jsp" value="file://$PROJECT_DIR$/web/layout" />
         <entry key="file://$PROJECT_DIR$/web/model2/board/list.jsp" value="file://$PROJECT_DIR$/web/model2/board" />
       </map>
     </option>

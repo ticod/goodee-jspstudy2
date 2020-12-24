@@ -16,6 +16,7 @@ import java.io.IOException;
 import java.text.SimpleDateFormat;
 import java.util.Date;
 import java.util.List;
+import java.util.Map;
 
 
 public class BoardAction {
@@ -290,5 +291,45 @@ public class BoardAction {
         request.setAttribute("fileName", fileName);
         request.setAttribute("CKEditorFuncNum", request.getParameter("CKEditorFuncNum"));
         return new ActionForward(false, "ckeditor.jsp");
+    }
+
+    public ActionForward pieGraph(HttpServletRequest request,
+                               HttpServletResponse response) {
+
+        BoardDao dao = new BoardDao();
+        List<Map<String, Integer>> list = dao.boardGraph();
+        StringBuilder json = new StringBuilder("[");
+        int i = 0;
+        for (Map<String, Integer> map : list) {
+            for (Map.Entry<String, Integer> entry : map.entrySet()) {
+                if (entry.getKey().equals("name")) {
+                    json.append("{\"name\":\"")
+                            .append(entry.getValue())
+                            .append("\",");
+                }
+                if (entry.getKey().equals("cnt")) {
+                    json.append("\"cnt\":")
+                            .append(entry.getValue())
+                            .append("}");
+                }
+            }
+            i++;
+            if (i < list.size()) {
+                json.append(",");
+            }
+        }
+
+        json.append("]");
+        request.setAttribute("json", json.toString().trim());
+
+        return new ActionForward();
+    }
+
+    public ActionForward barGraph(HttpServletRequest request,
+                                  HttpServletResponse response) {
+        BoardDao dao = new BoardDao();
+        List<Map<String, Object>> list = dao.barGraph();
+        request.setAttribute("list", list);
+        return new ActionForward();
     }
 }

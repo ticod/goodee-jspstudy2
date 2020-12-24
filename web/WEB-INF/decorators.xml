@@ -15,5 +15,6 @@
         <pattern>/model2/member/password*</pattern>
         <pattern>/model2/member/alert*</pattern>
         <pattern>/model2/board/imgupload*</pattern>
+        <pattern>/model2/ajax/*</pattern>
     </excludes>
 </decorators>
