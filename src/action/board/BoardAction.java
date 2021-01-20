@@ -8,15 +8,20 @@ import action.ActionForward;
 import com.oreilly.servlet.MultipartRequest;
 import model.board.Board;
 import model.mybatis.BoardDao;
+import org.json.simple.JSONArray;
+import org.json.simple.JSONObject;
+import org.json.simple.parser.JSONParser;
+import org.jsoup.Jsoup;
+import org.jsoup.nodes.Document;
+import org.jsoup.nodes.Element;
+import org.jsoup.select.Elements;
 
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 import java.io.File;
 import java.io.IOException;
 import java.text.SimpleDateFormat;
-import java.util.Date;
-import java.util.List;
-import java.util.Map;
+import java.util.*;
 
 
 public class BoardAction {
@@ -330,6 +335,84 @@ public class BoardAction {
         BoardDao dao = new BoardDao();
         List<Map<String, Object>> list = dao.barGraph();
         request.setAttribute("list", list);
+        return new ActionForward();
+    }
+
+    public ActionForward exchange(HttpServletRequest request,
+                                  HttpServletResponse response) {
+
+        String URL = "https://www.koreaexim.go.kr/site/program/financial/exchange?menuid=001001004002001";
+        Document doc = null;
+        List<String> list = new ArrayList<>();
+        List<String> list2 = new ArrayList<>();
+
+        try {
+            doc = Jsoup.connect(URL).get();
+            Elements e1 = doc.select(".tc");
+            Elements e2 = doc.select(".tl2.bdl");
+
+            for (int i = 0; i < e1.size(); i++) {
+                if (e1.get(i).html().equals("USD")) {
+                    list.add(e1.get(i).html());
+                    for (int j = 1; j <= 6; j++) {
+                        list.add(e1.get(i + j).html());
+                    }
+                    break;
+                }
+            }
+
+            for (Element element : e2) {
+                if (element.html().contains("미국")) {
+                    list2.add(element.html());
+                }
+            }
+        } catch (Exception e) {
+            e.printStackTrace();
+        }
+
+        request.setAttribute("list", list); // 통화코드, 환율 정보
+        request.setAttribute("list2", list2); // 국가 명
+        request.setAttribute("today", new Date());
+
+        return new ActionForward();
+    }
+
+    public ActionForward exchange2(HttpServletRequest request,
+                                  HttpServletResponse response) {
+
+        Map<String, List<String>> map = new HashMap<>();
+        try {
+            String kebhana = Jsoup.connect("http://fx.kebhana.com/FER1101M.web").get().text();
+            String strJson = kebhana.substring(kebhana.indexOf("{"));
+            JSONParser jsonParser = new JSONParser();
+            JSONObject json = (JSONObject) jsonParser.parse(strJson.trim());
+            JSONArray array = (JSONArray) json.get("리스트");
+            for (int i = 0; i < array.size(); i++) {
+                JSONObject obj = (JSONObject) array.get(i);
+                if (obj.get("통화명").toString().contains("미국")
+                    || obj.get("통화명").toString().contains("일본")
+                    || obj.get("통화명").toString().contains("유로")
+                    || obj.get("통화명").toString().contains("중국")
+                    || obj.get("통화명").toString().contains("영국")) {
+
+                    String str = obj.get("통화명").toString();
+                    String[] sarr = str.split(" ");
+                    String key = sarr[0];
+                    String code = sarr[1];
+                    List<String> list = new ArrayList<>();
+                    list.add(code);
+                    list.add(obj.get("매매기준율").toString());
+                    list.add(obj.get("현찰파실때").toString());
+                    list.add(obj.get("현찰사실때").toString());
+                    map.put(key, list);
+                }
+            }
+            request.setAttribute("date", json.get("날짜").toString());
+            request.setAttribute("map", map);
+        } catch (Exception e) {
+            e.printStackTrace();
+        }
+
         return new ActionForward();
     }
 }

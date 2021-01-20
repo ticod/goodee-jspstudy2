@@ -92,6 +92,8 @@
 
     <!-- Footer -->
     <footer class="w3-container w3-padding-16 w3-light-grey">
+        <div id="exchange"></div>
+        <div id="exchange2"></div>
         <p>Powered by <a href="https://www.w3schools.com/w3css/default.asp" target="_blank">w3.css</a></p>
     </footer>
 
@@ -259,9 +261,33 @@
         new Chart(ctx, config);
     }
 
+    function exchangeRate() {
+        $.ajax("${path}/model2/ajax/exchange.do", {
+            success: function(data) {
+                $("#exchange").html(data);
+            },
+            error: function(e) {
+                alert("환율 조회 서버 오류: " + e.status);
+            }
+        })
+    }
+
+    function exchangeRate2() {
+        $.ajax("${path}/model2/ajax/exchange2.do", {
+            success: function(data) {
+                $("#exchange2").html(data);
+            },
+            error: function(e) {
+                alert("환율 조회 서버 오류: " + e.status);
+            }
+        })
+    }
+
     $(function() {
         pieGraph();
         barGraph();
+        exchangeRate();
+        exchangeRate2();
     })
 </script>
 
